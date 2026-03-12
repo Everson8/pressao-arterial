@@ -26,3 +26,17 @@ export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
 // TODO: Add your tables here
+
+export const bloodPressureReadings = mysqlTable("blood_pressure_readings", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  systolic: int("systolic").notNull(), // mmHg - pressão sistólica
+  diastolic: int("diastolic").notNull(), // mmHg - pressão diastólica
+  heartRate: int("heartRate"), // bpm - frequência cardíaca (opcional)
+  notes: text("notes"), // observações opcionais
+  measuredAt: timestamp("measuredAt").notNull(), // data/hora da medição
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type BloodPressureReading = typeof bloodPressureReadings.$inferSelect;
+export type InsertBloodPressureReading = typeof bloodPressureReadings.$inferInsert;
