@@ -3,6 +3,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { goalsRouter, remindersRouter, sharingRouter } from "./routers-additional";
 import {
   createReading,
   deleteReading,
@@ -38,6 +39,10 @@ export const appRouter = router({
       return { success: true } as const;
     }),
   }),
+
+  goals: goalsRouter,
+  reminders: remindersRouter,
+  sharing: sharingRouter,
 
   readings: router({
     create: protectedProcedure

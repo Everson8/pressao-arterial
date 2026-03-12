@@ -40,3 +40,55 @@ export const bloodPressureReadings = mysqlTable("blood_pressure_readings", {
 
 export type BloodPressureReading = typeof bloodPressureReadings.$inferSelect;
 export type InsertBloodPressureReading = typeof bloodPressureReadings.$inferInsert;
+
+export const userGoals = mysqlTable("user_goals", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().unique(),
+  targetSystolic: int("targetSystolic").notNull().default(130), // Meta de pressão sistólica
+  targetDiastolic: int("targetDiastolic").notNull().default(80), // Meta de pressão diastólica
+  alertThresholdSystolic: int("alertThresholdSystolic").notNull().default(140), // Limite de alerta
+  alertThresholdDiastolic: int("alertThresholdDiastolic").notNull().default(90),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type UserGoal = typeof userGoals.$inferSelect;
+export type InsertUserGoal = typeof userGoals.$inferInsert;
+
+export const reminders = mysqlTable("reminders", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description"),
+  time: varchar("time", { length: 5 }).notNull(), // HH:mm format
+  daysOfWeek: varchar("daysOfWeek", { length: 20 }).notNull().default("0,1,2,3,4,5,6"), // 0=Sunday, 1=Monday, etc
+  enabled: int("enabled").notNull().default(1),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Reminder = typeof reminders.$inferSelect;
+export type InsertReminder = typeof reminders.$inferInsert;
+
+// Helper para converter enabled int para boolean
+export function isReminderEnabled(reminder: Reminder): boolean {
+  return reminder.enabled === 1;
+}
+
+// Helper para converter boolean para int
+export function reminderEnabledToInt(enabled: boolean): number {
+  return enabled ? 1 : 0;
+}
+
+export const sharedLinks = mysqlTable("shared_links", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  token: varchar("token", { length: 64 }).notNull().unique(),
+  doctorName: varchar("doctorName", { length: 255 }),
+  doctorEmail: varchar("doctorEmail", { length: 320 }),
+  expiresAt: timestamp("expiresAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type SharedLink = typeof sharedLinks.$inferSelect;
+export type InsertSharedLink = typeof sharedLinks.$inferInsert;

@@ -9,6 +9,10 @@ import Dashboard from "./pages/Dashboard";
 import NovaMedicao from "./pages/NovaMedicao";
 import Historico from "./pages/Historico";
 import Graficos from "./pages/Graficos";
+import Perfil from "./pages/Perfil";
+import Lembretes from "./pages/Lembretes";
+import Compartilhar from "./pages/Compartilhar";
+import Compartilhado from "./pages/Compartilhado";
 
 function Router() {
   return (
@@ -18,6 +22,10 @@ function Router() {
         <Route path="/nova-medicao" component={NovaMedicao} />
         <Route path="/historico" component={Historico} />
         <Route path="/graficos" component={Graficos} />
+        <Route path="/perfil" component={Perfil} />
+        <Route path="/lembretes" component={Lembretes} />
+        <Route path="/compartilhar" component={Compartilhar} />
+        <Route path="/compartilhado/:token" component={Compartilhado} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>

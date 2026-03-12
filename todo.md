@@ -30,3 +30,17 @@
 ## Testes
 - [x] Testes Vitest para lógica de classificação clínica
 - [x] Testes Vitest para rotas tRPC de medições
+
+
+## Funcionalidades Adicionais
+- [x] Schema: tabela `user_goals` (metas de pressão arterial por usuário)
+- [x] Schema: tabela `reminders` (lembretes de medição)
+- [x] Schema: tabela `shared_links` (links de compartilhamento com médico)
+- [x] Rota tRPC: `goals.get` e `goals.update`
+- [x] Rota tRPC: `reminders.list`, `reminders.create`, `reminders.delete`
+- [x] Rota tRPC: `sharing.createLink` e `sharing.getByToken`
+- [x] Página: Perfil com metas pessoais e alertas
+- [x] Página: Configuração de lembretes
+- [x] Página: Compartilhamento com médico (gerar link)
+- [x] Página pública: Visualização de histórico compartilhado
+- [x] Integração de menu de configurações no DashboardLayout
