@@ -44,3 +44,19 @@
 - [x] Página: Compartilhamento com médico (gerar link)
 - [x] Página pública: Visualização de histórico compartilhado
 - [x] Integração de menu de configurações no DashboardLayout
+
+
+## Sistema de Notificações por E-mail
+- [x] Schema: tabela `notification_preferences` (preferências de notificação por usuário)
+- [x] Schema: tabela `email_logs` (registro de e-mails enviados)
+- [x] Rota tRPC: `notifications.getPreferences` e `notifications.updatePreferences`
+- [x] Rota tRPC: `notifications.getLogs` (histórico de e-mails)
+- [x] Página: Preferências de Notificação (ativar/desativar, frequência, horários)
+- [x] Job de background: Envio de e-mail para lembretes agendados
+- [x] Job de background: Resumo semanal de medições
+- [x] Job de background: Alertas de valores fora da meta
+- [x] Template de e-mail: Lembrete de medição
+- [x] Template de e-mail: Resumo semanal
+- [x] Template de e-mail: Alerta de valor fora da meta
+- [x] Integração com Forge API para envio de e-mails
+- [ ] Testes Vitest para lógica de notificações

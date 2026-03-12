@@ -92,3 +92,33 @@ export const sharedLinks = mysqlTable("shared_links", {
 
 export type SharedLink = typeof sharedLinks.$inferSelect;
 export type InsertSharedLink = typeof sharedLinks.$inferInsert;
+
+export const notificationPreferences = mysqlTable("notification_preferences", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().unique(),
+  reminderNotifications: int("reminderNotifications").notNull().default(1),
+  weeklyDigest: int("weeklyDigest").notNull().default(1),
+  alertNotifications: int("alertNotifications").notNull().default(1),
+  weeklyDigestDay: int("weeklyDigestDay").notNull().default(1),
+  weeklyDigestTime: varchar("weeklyDigestTime", { length: 5 }).notNull().default("09:00"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type NotificationPreference = typeof notificationPreferences.$inferSelect;
+export type InsertNotificationPreference = typeof notificationPreferences.$inferInsert;
+
+export const emailLogs = mysqlTable("email_logs", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  type: varchar("type", { length: 50 }).notNull(),
+  subject: varchar("subject", { length: 255 }).notNull(),
+  recipientEmail: varchar("recipientEmail", { length: 320 }).notNull(),
+  status: varchar("status", { length: 20 }).notNull().default("pending"),
+  errorMessage: text("errorMessage"),
+  sentAt: timestamp("sentAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type EmailLog = typeof emailLogs.$inferSelect;
+export type InsertEmailLog = typeof emailLogs.$inferInsert;

@@ -4,6 +4,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { goalsRouter, remindersRouter, sharingRouter } from "./routers-additional";
+import { notificationsRouter } from "./routers-notifications";
 import {
   createReading,
   deleteReading,
@@ -43,6 +44,7 @@ export const appRouter = router({
   goals: goalsRouter,
   reminders: remindersRouter,
   sharing: sharingRouter,
+  notifications: notificationsRouter,
 
   readings: router({
     create: protectedProcedure

@@ -252,14 +252,22 @@ export default function Perfil() {
           <Bell className="w-4 h-4" />
           <span className="text-xs">Lembretes</span>
         </Button>
-        <Button
-          variant="outline"
-          onClick={() => setLocation("/compartilhar")}
-          className="gap-2 h-12"
-        >
-          <Heart className="w-4 h-4" />
-          <span className="text-xs">Compartilhar</span>
-        </Button>
+              <Button
+                variant="outline"
+                onClick={() => setLocation("/compartilhar")}
+                className="w-full justify-start"
+              >
+                <Heart className="w-4 h-4 mr-2" />
+                Compartilhar com Médico
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setLocation("/notificacoes")}
+                className="w-full justify-start"
+              >
+                <Bell className="w-4 h-4 mr-2" />
+                Notificações por E-mail
+              </Button>
       </div>
     </div>
   );

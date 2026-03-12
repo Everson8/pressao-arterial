@@ -13,6 +13,7 @@ import Perfil from "./pages/Perfil";
 import Lembretes from "./pages/Lembretes";
 import Compartilhar from "./pages/Compartilhar";
 import Compartilhado from "./pages/Compartilhado";
+import Notificacoes from "./pages/Notificacoes";
 
 function Router() {
   return (
@@ -25,6 +26,7 @@ function Router() {
         <Route path="/perfil" component={Perfil} />
         <Route path="/lembretes" component={Lembretes} />
         <Route path="/compartilhar" component={Compartilhar} />
+        <Route path="/notificacoes" component={Notificacoes} />
         <Route path="/compartilhado/:token" component={Compartilhado} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
